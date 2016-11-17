@@ -1,0 +1,236 @@
+var _user$project$AnalogClock$view = function (model) {
+	var hourNow = A2(
+		_elm_lang$core$Basics_ops['%'],
+		_elm_lang$core$Date$hour(
+			_elm_lang$core$Date$fromTime(model)),
+		12);
+	var minuteNow = _elm_lang$core$Date$minute(
+		_elm_lang$core$Date$fromTime(model));
+	var angleMinute = _elm_lang$core$Basics$toFloat(6 * minuteNow);
+	var angleHour = A2(
+		F2(
+			function (x, y) {
+				return x + y;
+			}),
+		angleMinute / 12,
+		_elm_lang$core$Basics$toFloat(30 * hourNow));
+	var handHourX = _elm_lang$core$Basics$toString(
+		50 + (25 * _elm_lang$core$Basics$sin((angleHour * _elm_lang$core$Basics$pi) / 180)));
+	var handHourY = _elm_lang$core$Basics$toString(
+		50 - (25 * _elm_lang$core$Basics$cos((angleHour * _elm_lang$core$Basics$pi) / 180)));
+	var handMinuteX = _elm_lang$core$Basics$toString(
+		50 + (32 * _elm_lang$core$Basics$sin((angleMinute * _elm_lang$core$Basics$pi) / 180)));
+	var handMinuteY = _elm_lang$core$Basics$toString(
+		50 - (32 * _elm_lang$core$Basics$cos((angleMinute * _elm_lang$core$Basics$pi) / 180)));
+	var secondNow = _elm_lang$core$Date$second(
+		_elm_lang$core$Date$fromTime(model));
+	var angleSecond = _elm_lang$core$Basics$toFloat(6 * secondNow);
+	var handSecondX = _elm_lang$core$Basics$toString(
+		50 + (38 * _elm_lang$core$Basics$sin((angleSecond * _elm_lang$core$Basics$pi) / 180)));
+	var handSecondY = _elm_lang$core$Basics$toString(
+		50 - (38 * _elm_lang$core$Basics$cos((angleSecond * _elm_lang$core$Basics$pi) / 180)));
+	return A2(
+		_elm_lang$html$Html$div,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$svg$Svg$svg,
+				{
+					ctor: '::',
+					_0: _elm_lang$svg$Svg_Attributes$viewBox('0 0 100 100'),
+					_1: {
+						ctor: '::',
+						_0: _elm_lang$svg$Svg_Attributes$width('300px'),
+						_1: {ctor: '[]'}
+					}
+				},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$svg$Svg$circle,
+						{
+							ctor: '::',
+							_0: _elm_lang$svg$Svg_Attributes$cx('50'),
+							_1: {
+								ctor: '::',
+								_0: _elm_lang$svg$Svg_Attributes$cy('50'),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$svg$Svg_Attributes$r('45'),
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$svg$Svg_Attributes$fill('#2a2a2a'),
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						},
+						{ctor: '[]'}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$svg$Svg$circle,
+							{
+								ctor: '::',
+								_0: _elm_lang$svg$Svg_Attributes$cx('50'),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$svg$Svg_Attributes$cy('50'),
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$svg$Svg_Attributes$r('40'),
+										_1: {
+											ctor: '::',
+											_0: _elm_lang$svg$Svg_Attributes$fill('#f6f6f6'),
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							},
+							{ctor: '[]'}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$svg$Svg$line,
+								{
+									ctor: '::',
+									_0: _elm_lang$svg$Svg_Attributes$x1('50'),
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$svg$Svg_Attributes$y1('50'),
+										_1: {
+											ctor: '::',
+											_0: _elm_lang$svg$Svg_Attributes$x2(handSecondX),
+											_1: {
+												ctor: '::',
+												_0: _elm_lang$svg$Svg_Attributes$y2(handSecondY),
+												_1: {
+													ctor: '::',
+													_0: _elm_lang$svg$Svg_Attributes$stroke('#2a2a2a'),
+													_1: {
+														ctor: '::',
+														_0: _elm_lang$svg$Svg_Attributes$strokeWidth('0.5'),
+														_1: {ctor: '[]'}
+													}
+												}
+											}
+										}
+									}
+								},
+								{ctor: '[]'}),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_elm_lang$svg$Svg$line,
+									{
+										ctor: '::',
+										_0: _elm_lang$svg$Svg_Attributes$x1('50'),
+										_1: {
+											ctor: '::',
+											_0: _elm_lang$svg$Svg_Attributes$y1('50'),
+											_1: {
+												ctor: '::',
+												_0: _elm_lang$svg$Svg_Attributes$x2(handMinuteX),
+												_1: {
+													ctor: '::',
+													_0: _elm_lang$svg$Svg_Attributes$y2(handMinuteY),
+													_1: {
+														ctor: '::',
+														_0: _elm_lang$svg$Svg_Attributes$stroke('#2a2a2a'),
+														_1: {
+															ctor: '::',
+															_0: _elm_lang$svg$Svg_Attributes$strokeWidth('1'),
+															_1: {ctor: '[]'}
+														}
+													}
+												}
+											}
+										}
+									},
+									{ctor: '[]'}),
+								_1: {
+									ctor: '::',
+									_0: A2(
+										_elm_lang$svg$Svg$line,
+										{
+											ctor: '::',
+											_0: _elm_lang$svg$Svg_Attributes$x1('50'),
+											_1: {
+												ctor: '::',
+												_0: _elm_lang$svg$Svg_Attributes$y1('50'),
+												_1: {
+													ctor: '::',
+													_0: _elm_lang$svg$Svg_Attributes$x2(handHourX),
+													_1: {
+														ctor: '::',
+														_0: _elm_lang$svg$Svg_Attributes$y2(handHourY),
+														_1: {
+															ctor: '::',
+															_0: _elm_lang$svg$Svg_Attributes$stroke('#2a2a2a'),
+															_1: {
+																ctor: '::',
+																_0: _elm_lang$svg$Svg_Attributes$strokeWidth('2'),
+																_1: {ctor: '[]'}
+															}
+														}
+													}
+												}
+											}
+										},
+										{ctor: '[]'}),
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$div,
+					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html$text(
+							A2(
+								_elm_lang$core$Basics_ops['++'],
+								'model(UNIX time): ',
+								_elm_lang$core$Basics$toString(model))),
+						_1: {ctor: '[]'}
+					}),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{ctor: '[]'},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text(
+								A2(
+									_elm_lang$core$Basics_ops['++'],
+									'Date.fromTime model: ',
+									_elm_lang$core$Basics$toString(
+										_elm_lang$core$Date$fromTime(model)))),
+							_1: {ctor: '[]'}
+						}),
+					_1: {ctor: '[]'}
+				}
+			}
+		});
+};
+var _user$project$AnalogClock$update = F2(
+	function (_p1, _p0) {
+		var _p2 = _p1;
+		return {ctor: '_Tuple2', _0: _p2._0, _1: _elm_lang$core$Platform_Cmd$none};
+	});
+var _user$project$AnalogClock$SetTime = function (a) {
+	return {ctor: 'SetTime', _0: a};
+};
+var _user$project$AnalogClock$now = A2(_elm_lang$core$Task$perform, _user$project$AnalogClock$SetTime, _elm_lang$core$Time$now);
+var _user$project$AnalogClock$init = {ctor: '_Tuple2', _0: 0, _1: _user$project$AnalogClock$now};
+var _user$project$AnalogClock$subscriptions = function (model) {
+	return A2(_elm_lang$core$Time$every, _elm_lang$core$Time$second, _user$project$AnalogClock$SetTime);
+};
+var _user$project$AnalogClock$main = _elm_lang$html$Html$program(
+	{view: _user$project$AnalogClock$view, init: _user$project$AnalogClock$init, subscriptions: _user$project$AnalogClock$subscriptions, update: _user$project$AnalogClock$update})();
