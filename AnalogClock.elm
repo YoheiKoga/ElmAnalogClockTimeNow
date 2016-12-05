@@ -50,7 +50,7 @@ subscriptions model =
   Time.every Time.second SetTime
 
 -- VIEW
-
+view : Model -> Html Msg
 view model =
 
   let
